@@ -1,0 +1,12 @@
+{
+  "name": "three-tier-cloud-architecture",
+  "version": "1.0.0",
+  "description": "Node.js application for AWS three-tier cloud architecture project",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js"
+  },
+  "license": "MIT"
+}

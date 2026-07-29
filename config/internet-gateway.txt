@@ -1,0 +1,36 @@
+{
+    "InternetGateways": [
+        {
+            "Attachments": [
+                {
+                    "State": "available",
+                    "VpcId": "vpc-0b8abdf55187111a2"
+                }
+            ],
+            "InternetGatewayId": "igw-04ca84f98d437db94",
+            "OwnerId": "203637464233",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "three-tier-igw"
+                }
+            ]
+        },
+        {
+            "Attachments": [
+                {
+                    "State": "available",
+                    "VpcId": "vpc-017d02a9d658ec66c"
+                }
+            ],
+            "InternetGatewayId": "igw-058d01213df5184b5",
+            "OwnerId": "203637464233",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "bootcamp-igw"
+                }
+            ]
+        }
+    ]
+}

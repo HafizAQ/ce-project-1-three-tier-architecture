@@ -1,0 +1,682 @@
+{
+    "SecurityGroups": [
+        {
+            "GroupId": "sg-03e745f582cea2f21",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 3306,
+                    "ToPort": 3306,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow outbound to data-tier-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-097b91305f3504c9f"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Allow HTTPS(443) to internet for SSM and secure Package downloads",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "app-tier-sg"
+                }
+            ],
+            "VpcId": "vpc-0b8abdf55187111a2",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-03e745f582cea2f21",
+            "OwnerId": "203637464233",
+            "GroupName": "app-tier-sg",
+            "Description": "Allow 80,443 from alb-sg",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow HTTP (80) from alb-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-03b672bea8bfb5eee"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-097b91305f3504c9f",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "data-tier-sg"
+                }
+            ],
+            "VpcId": "vpc-0b8abdf55187111a2",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-097b91305f3504c9f",
+            "OwnerId": "203637464233",
+            "GroupName": "data-tier-sg",
+            "Description": "Security group for database tier",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 3306,
+                    "ToPort": 3306,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow  MYSQL DB port from app-tier-sg only",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-03e745f582cea2f21"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-03b672bea8bfb5eee",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow HTTP (80) to app-tier-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-03e745f582cea2f21"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "alb-sg"
+                }
+            ],
+            "VpcId": "vpc-0b8abdf55187111a2",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-03b672bea8bfb5eee",
+            "OwnerId": "203637464233",
+            "GroupName": "alb-sg",
+            "Description": "Security group for Application Load Balancer",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Allow HTTP (80) from internet",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Allow HTTPS (443) from internet",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-0d9683c972aba4863",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 3306,
+                    "ToPort": 3306,
+                    "UserIdGroupPairs": [
+                        {
+                            "UserId": "203637464233",
+                            "GroupId": "sg-097b91305f3504c9f"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "web-servers-sg"
+                }
+            ],
+            "VpcId": "vpc-0b8abdf55187111a2",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-0d9683c972aba4863",
+            "OwnerId": "203637464233",
+            "GroupName": "web-servers-sg",
+            "Description": "Security group for web servers",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [
+                        {
+                            "UserId": "203637464233",
+                            "GroupId": "sg-03b672bea8bfb5eee"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-07f40b406c905d0ca",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "VpcId": "vpc-07f871bea1bffca5f",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-07f40b406c905d0ca",
+            "OwnerId": "203637464233",
+            "GroupName": "default",
+            "Description": "default VPC security group",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [
+                        {
+                            "UserId": "203637464233",
+                            "GroupId": "sg-07f40b406c905d0ca"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-0a4716d8a833e4176",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "VpcId": "vpc-0b8abdf55187111a2",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-0a4716d8a833e4176",
+            "OwnerId": "203637464233",
+            "GroupName": "default",
+            "Description": "default VPC security group",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [
+                        {
+                            "UserId": "203637464233",
+                            "GroupId": "sg-0a4716d8a833e4176"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-088a78a99acf47c0a",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "VpcId": "vpc-017d02a9d658ec66c",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-088a78a99acf47c0a",
+            "OwnerId": "203637464233",
+            "GroupName": "default",
+            "Description": "default VPC security group",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [
+                        {
+                            "UserId": "203637464233",
+                            "GroupId": "sg-088a78a99acf47c0a"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-00ee9df4b3f8a4053",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 3306,
+                    "ToPort": 3306,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "MySQL (3306) to database-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-020c3a6b30c15a956"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "HTTPS (443) to 0.0.0.0/0",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "app-tier-sg1"
+                }
+            ],
+            "VpcId": "vpc-07f871bea1bffca5f",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-00ee9df4b3f8a4053",
+            "OwnerId": "203637464233",
+            "GroupName": "app-tier-sg",
+            "Description": "Allow custom TCP (8080) from sg-web-tier and SSH (22) from sg-bastion",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 8080,
+                    "ToPort": 8080,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow custom TCP (8080) from web-tier-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-09ddbb86dac4dc426"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 22,
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow SSH (22) from bastion-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-0ef721a1f940b6353"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-0ef721a1f940b6353",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 22,
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "SSH (22) to web-tier-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-09ddbb86dac4dc426"
+                        },
+                        {
+                            "Description": "SSH (22) to app-tier-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-00ee9df4b3f8a4053"
+                        },
+                        {
+                            "Description": "SSH (22) to database-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-020c3a6b30c15a956"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "bastion-sg1"
+                }
+            ],
+            "VpcId": "vpc-07f871bea1bffca5f",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-0ef721a1f940b6353",
+            "OwnerId": "203637464233",
+            "GroupName": "bastion-sg",
+            "Description": "Allow SSH from my-pc",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 22,
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Allow SSH from my-pc",
+                            "CidrIp": "141.7.125.221/32"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-0dc08eb8474611a30",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "week2-web-server-sg"
+                }
+            ],
+            "VpcId": "vpc-07f871bea1bffca5f",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-0dc08eb8474611a30",
+            "OwnerId": "203637464233",
+            "GroupName": "week2-web-server-sg",
+            "Description": "Security group for Week 2 lab - allows SSH and HTTP",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Public HTTP access",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 22,
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "SSH access from my IP",
+                            "CidrIp": "141.7.125.221/32"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-020c3a6b30c15a956",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "HTTPS to Internet",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "database-sg1"
+                }
+            ],
+            "VpcId": "vpc-07f871bea1bffca5f",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-020c3a6b30c15a956",
+            "OwnerId": "203637464233",
+            "GroupName": "database-sg",
+            "Description": "Allow MySQL (3306) from sg-app-tier   and SSH (22) from sg-bastion",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 22,
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow SSH (22) from bastion-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-0ef721a1f940b6353"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 3306,
+                    "ToPort": 3306,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Allow MySQL (3306) from app-tier-sg ",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-00ee9df4b3f8a4053"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-09ddbb86dac4dc426",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 8080,
+                    "ToPort": 8080,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Cutom TCP (8080) to app-tier-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-00ee9df4b3f8a4053"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Allow HTTPS (443) to Internet",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "web-tier-sg"
+                }
+            ],
+            "VpcId": "vpc-07f871bea1bffca5f",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:203637464233:security-group/sg-09ddbb86dac4dc426",
+            "OwnerId": "203637464233",
+            "GroupName": "web-tier-sg",
+            "Description": "Allow HTTP and HTTPS from Internet and SSH from bastion-sg",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Allow HTTP from Internet",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 22,
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "SSH (22) from bastion-sg",
+                            "UserId": "203637464233",
+                            "GroupId": "sg-0ef721a1f940b6353"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "Allow HTTPS from Internet",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        }
+    ]
+}

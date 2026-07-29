@@ -1,0 +1,58 @@
+{
+    "NatGateways": [
+        {
+            "CreateTime": "2026-07-23T19:14:51+00:00",
+            "NatGatewayAddresses": [
+                {
+                    "AllocationId": "eipalloc-05f7aa8cbc534b8a0",
+                    "NetworkInterfaceId": "eni-05695a942aad29130",
+                    "PrivateIp": "10.0.1.121",
+                    "PublicIp": "23.20.51.235",
+                    "AssociationId": "eipassoc-0686148dbe1afde87",
+                    "IsPrimary": true,
+                    "Status": "succeeded"
+                }
+            ],
+            "NatGatewayId": "nat-01a042676289ef3dd",
+            "State": "available",
+            "SubnetId": "subnet-0f295f17f700b934b",
+            "VpcId": "vpc-0b8abdf55187111a2",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "three-tier-nat-1a-gw"
+                }
+            ],
+            "ConnectivityType": "public",
+            "AvailabilityMode": "zonal",
+            "AttachedAppliances": []
+        },
+        {
+            "CreateTime": "2026-07-23T19:17:54+00:00",
+            "NatGatewayAddresses": [
+                {
+                    "AllocationId": "eipalloc-0395cf6d0d0addbf7",
+                    "NetworkInterfaceId": "eni-0f55d62d53cf00dee",
+                    "PrivateIp": "10.0.2.164",
+                    "PublicIp": "54.198.146.241",
+                    "AssociationId": "eipassoc-0f89d663f6716ea9f",
+                    "IsPrimary": true,
+                    "Status": "succeeded"
+                }
+            ],
+            "NatGatewayId": "nat-0910633345378aa19",
+            "State": "available",
+            "SubnetId": "subnet-088aa13cf8a99827a",
+            "VpcId": "vpc-0b8abdf55187111a2",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "three-tier-nat-1b-gw"
+                }
+            ],
+            "ConnectivityType": "public",
+            "AvailabilityMode": "zonal",
+            "AttachedAppliances": []
+        }
+    ]
+}

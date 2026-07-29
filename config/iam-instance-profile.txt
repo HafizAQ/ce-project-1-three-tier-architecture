@@ -1,0 +1,22 @@
+[
+    {
+        "Arn": "arn:aws:iam::203637464233:instance-profile/ThreeTierEC2SSMProfile",
+        "Id": "AIPAS62N5DSUXQEKT7N23"
+    },
+    {
+        "Arn": "arn:aws:iam::203637464233:instance-profile/ec2-s3-cloudwatch-role",
+        "Id": "AIPAS62N5DSU7PC7IW2JY"
+    },
+    {
+        "Arn": "arn:aws:iam::203637464233:instance-profile/ThreeTierEC2SSMProfile",
+        "Id": "AIPAS62N5DSUXQEKT7N23"
+    },
+    {
+        "Arn": "arn:aws:iam::203637464233:instance-profile/ThreeTierEC2SSMProfile",
+        "Id": "AIPAS62N5DSUXQEKT7N23"
+    },
+    {
+        "Arn": "arn:aws:iam::203637464233:instance-profile/ThreeTierEC2SSMProfile",
+        "Id": "AIPAS62N5DSUXQEKT7N23"
+    }
+]
